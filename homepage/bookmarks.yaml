@@ -1,0 +1,24 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/bookmarks
+
+- Developer:
+    - Github:
+        - abbr: GH
+          href: https://github.com/soulsender
+    - Homepage:
+        - abbr: HP
+          href: https://gethomepage.dev
+
+- Social:
+    - Reddit:
+        - abbr: R
+          href: https://reddit.com/
+    - Twitter:
+        - abbr: T
+          href: https://twitter.com/
+
+- Entertainment:
+    - YouTube:
+        - abbr: YT
+          href: https://youtube.com/

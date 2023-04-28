@@ -1,0 +1,27 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/widgets
+
+- resources:
+    cpu: true
+    disk: /
+    memory: true
+    uptime: true
+
+- resources:
+    label: OVERHEAT >70°C
+    cputemp: true
+    units: metric
+
+- search:
+    provider: custom
+    url: https://www.ecosia.org/search?method=index&q=
+    target: _blank
+
+- openmeteo:
+    latitude: 52.52
+    longitude: 13.41
+    timezone: timezone # optional
+    units: metric # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+

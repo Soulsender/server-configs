@@ -1,0 +1,26 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/settings
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+title: TheBeach
+
+# change to https if needed
+background: http://raw.githubusercontent.com/Soulsender/wallpapers/main/bluespace_dark.png
+
+favicon: https://raw.githubusercontent.com/Soulsender/Soulsender.github.io/0e0ebb76738fe9bcbd6b510d050f6fc73fce4f5f/favicon.svg
+
+color: cyan
+
+# layout:
+#   Media:
+#     style: row
+#     columns: 1
+#   Utilities:
+#     style: row
+#     columns: 2
+
+#headerStyle: boxed
