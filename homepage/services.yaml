@@ -3,6 +3,7 @@
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/qbittorrent.png
         href: urltocontainer:port
         container: qbittorrent
+        server: my-docker
         widget:
             type: qbittorrent
             url: urltocontainer:port
@@ -12,10 +13,13 @@
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/metube.png
         href: urltocontainer:port
         container: metube
+        server: my-docker
 
 - Content:
     - Minecraft:
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/minecraft.png
+        container: minecraft
+        server: my-docker
         widget:
             type: minecraft
             url: udp://ipofserver:port   
@@ -23,6 +27,7 @@
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/jellyfin.png
         href: urltocontainer:port
         container: jellyfin
+        server: my-docker
         widget:
             type: jellyfin
             url: urltocontainer:port
@@ -33,6 +38,7 @@
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/portainer-alt.png
         href: urltocontainer:port
         container: portainer
+        server: my-docker
         widget:
             type: portainer
             url: urltocontainer:port
@@ -48,6 +54,7 @@
         href: urltocontainer:port
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/raspberrypi.png
         container: pihole
+        server: my-docker
         widget:
             type: pihole
             url: urltocontainer:port
@@ -58,5 +65,6 @@
         ping: https://soulsender.github.io
     - Gluetun:
         container: gluetun
+        server: my-docker
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/openvpn.png
     

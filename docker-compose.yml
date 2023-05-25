@@ -1,0 +1,111 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      TZ: America/Timezone
+      # Wireguard
+      VPN_SERVICE_PROVIDER: mullvad
+      VPN_TYPE: wireguard
+      WIREGUARD_PRIVATE_KEY: key here
+      WIREGUARD_ADDRESSES: addresses here
+      SERVER_CITIES: Zurich
+    ports:
+      - "0.0.0.0:8080:8080/tcp"   # <-- ports go here, not below
+      - 6881:6881/tcp
+      - 6881:6881/udp
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Timezone
+    volumes:
+      - ~/qbittorrent/config:/config
+      - ~/qbittorrent:/downloads
+    depends_on:
+      - gluetun
+    restart: unless-stopped
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/portainer:/data
+    restart: unless-stopped
+
+  jellyfin:
+    image: linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ~/jellyfin:/config
+      - /path/to/tvseries:/data/tvshows
+      - /path/to/movies:/data/movies
+    ports:
+      - 8096:8096
+      # optional
+      #- 7359:7359/udp 
+    restart: unless-stopped
+    
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: homepage
+    ports:
+      - 80:3000
+    volumes:
+      - ~/homepage:/app/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+  metube:
+    image: ghcr.io/alexta69/metube:latest
+    container_name: metube
+    ports:
+      - "8081:8081"
+    volumes:
+      - /path/to/downloads:/downloads
+    restart: unless-stopped
+
+  minecraft:
+    image: itzg/minecraft-server
+    ports:
+      - 25565:25565
+    environment:
+      EULA: "TRUE"
+      SERVER_NAME: "ඞඞඞ BASEDLAND ඞඞඞ"
+      ICON: "https://cdn.discordapp.com/attachments/1098875746853851189/1099243880932720711/image.png"
+      ENABLE_COMMAND_BLOCK: "true"
+      RESOURCE_PACK: "https://download.mc-packs.net/pack/dd1c5f56bc29233021a2827963653f881f91a8b3.zip"
+      RESOURCE_PACK_ENFORCE: "TRUE"
+      RESOURCE_PACK_SHA1: "dd1c5f56bc29233021a2827963653f881f91a8b3"
+      MOTD: "we are bing chilling"
+      LEVEL: "world2"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      # attach a directory relative to the directory containing this compose file
+      - ~/minecraft/minecraft-data:/data
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    ports:
+      - 3001:3001
+    volumes:
+      - /var/uptime-kuma:/app/data
+    restart: unless-stopped
