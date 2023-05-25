@@ -1,32 +1,37 @@
 - Media:
-    - Jellyfin:
-        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/jellyfin.png
+    - qBittorrent:
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/qbittorrent.png
         href: urltocontainer:port
-        ping: urltocontainer:port
-        container: jellyfin
+        container: qbittorrent
         widget:
-            type: jellyfin
+            type: qbittorrent
             url: urltocontainer:port
-            key: yourjellyfinapikey
-    
+            username: user
+            password: password    
     - MeTube:
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/metube.png
         href: urltocontainer:port
-        ping: urltocontainer:port
         container: metube
 
-- Gaming:
+- Content:
     - Minecraft:
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/minecraft.png
         widget:
             type: minecraft
             url: udp://ipofserver:port   
+    - Jellyfin:
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/jellyfin.png
+        href: urltocontainer:port
+        container: jellyfin
+        widget:
+            type: jellyfin
+            url: urltocontainer:port
+            key: yourjellyfinapikey
 
 - Utilities:
     - Portainer:
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/portainer-alt.png
         href: urltocontainer:port
-        ping: urltocontainer:port
         container: portainer
         widget:
             type: portainer
@@ -36,27 +41,22 @@
     - SSH:
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/shell.png
         href: urltocontainer:port
-        ping: urltocontainer:port
     - UptimeKuma:
         href: urltocontainer:port
-        ping: urltocontainer:port
         icon: https://github.com/walkxcode/dashboard-icons/blob/main/png/uptime-kuma.png?raw=true
     - PiHole:
         href: urltocontainer:port
         icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/raspberrypi.png
-        ping: urltocontainer:port
         container: pihole
         widget:
             type: pihole
             url: urltocontainer:port
             key: yourpiholeapikey
-    - Nextcloud:
-        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/nextcloud.png
-        href: urltocontainer:port
-        ping: urltocontainer:port
-        container: nextcloud
     - Soulsender.me:
         icon: https://raw.githubusercontent.com/Soulsender/Soulsender.github.io/0e0ebb76738fe9bcbd6b510d050f6fc73fce4f5f/favicon.svg
         href: https://soulsender.github.io
         ping: https://soulsender.github.io
+    - Gluetun:
+        container: gluetun
+        icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/openvpn.png
     

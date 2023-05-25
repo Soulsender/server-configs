@@ -9,7 +9,7 @@
     uptime: true
 
 - resources:
-    label: OVERHEAT >70°C
+    label: OVERHEAT >90°C
     cputemp: true
     units: metric
 
